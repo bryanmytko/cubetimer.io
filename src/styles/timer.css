@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;500;600;700&display=swap');
+
+.timer-btn-start {
+  width: 100%;
+  height: 3em;
+  font-size: 2em;
+}
+
+.timer-btn-ready {
+  background: orange;
+}
+
+/* .timer-btn-start:focus { */
+/*   background: orange; */
+/* } */
+
+.timer-window {
+  font-family: "Noto Sans Display", sans-serif !important;
+  background: white;
+  font-size: 4em;
+}
+
+.timer-container {
+  width: 60%;
+}
