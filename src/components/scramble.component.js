@@ -9,7 +9,7 @@ const Scramble = () => {
     setScramble(ScrambleService.generate());
   }, []);
 
-  return <h5 className="white scramble">{scramble}</h5>;
+  return <h5 className="grey lighten-3 scramble">{scramble}</h5>;
 };
 
 export default Scramble;
