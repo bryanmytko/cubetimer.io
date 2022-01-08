@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import '../styles/timer.css';
 
+import Scramble from './scramble.component';
+import ScrambleService from '../services/scramble.service';
 import { formattedTime } from '../util/format';
 import TimerReducer from '../reducers/timer.reducer';
 
@@ -11,7 +13,8 @@ const initialState = {
   slowestTime: 0,
   runningAverage: 0,
   time: 0,
-  solveTimes: []
+  solveTimes: [],
+  scramble: ScrambleService.generate()
 };
 
 const Timer = () => {
@@ -47,6 +50,7 @@ const Timer = () => {
   }, [state.running]);
 
   return <div className="container timer-container">
+    <Scramble scramble={state.scramble} />
     <div className="solve-times card">
       <ul>
       {
@@ -60,13 +64,14 @@ const Timer = () => {
       <span>{formattedTime(state.time, '0:00')}</span>
     </div>
     <button id="timer-btn"
-      className={`btn timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
-      onClick={() => dispatch({ type: 'TOGGLE' })}>Start</button>
+      className={`black-text btn timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
+      onClick={() => dispatch({ type: 'TOGGLE' })}>Press spacebar or click to begin!</button>
     <div className="card row">
-      <div className="col s6">
+      <div className="col s6 left-align">
+        <p>Cubes Solved: {state.solveTimes.length}</p>
         <p>Average: {formattedTime(state.runningAverage)}</p>
       </div>
-      <div className="col s6">
+      <div className="col s6 right-align">
         <p>Fastest: {formattedTime(state.fastestTime)}</p>
         <p>Slowest: {formattedTime(state.slowestTime)}</p>
       </div>
