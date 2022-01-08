@@ -1,121 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import '../styles/timer.css';
 
+import { formattedTime } from '../util/format';
+import TimerReducer from '../reducers/timer.reducer';
+
+const initialState = {
+  running: false,
+  ready: false,
+  fastestTime: 0,
+  slowestTime: 0,
+  runningAverage: 0,
+  time: 0,
+  solveTimes: []
+};
+
 const Timer = () => {
-  const [time, setTime] = useState(0);
-  const [running, setRunning] = useState(false);
-  const [solveTimes, setSolveTimes] = useState([]);
-  const [ready, setReady] = useState(false);
-  const [fastestTime, setFastestTime] = useState('--');
-  const [slowestTime, setSlowestTime] = useState('--');
-  const [runningAverage, setRunningAverage] = useState('--');
+  const [state, dispatch] = useReducer(TimerReducer, initialState);
 
   useEffect(() => {
     let interval;
 
+    if(state.running) {
+      interval = setInterval(() => dispatch({ type: 'TICK' }), 10);
+    }
+
     const handleKeydown = e => {
       if(e.key !== ' ') return;
-      if(!running) setReady(true);
+      e.preventDefault();
+      dispatch({ type: 'READY' });
     };
 
     const handleKeyup = e => {
       if(e.key !== ' ') return;
-
-      setReady(false);
-
-      if(!running) {
-        setRunning(true);
-      } else {
-        setRunning(false);
-        setSolveTimes(s => [...s, time]);
-        setTime(0);
-        /* Not setting this fast enough? Need to research a callback or reducer solution */
-        // setFastestTime(calcFastestTime(solveTimes));
-        // setSlowestTime(calcSlowestTime(solveTimes));
-        // setRunningAverage(calcRunningAverage(solveTimes));
-      }
-    };
-
-    const calcFastestTime = (times) => {
-      return formattedTime(Math.min(...times));
-    };
-
-    const calcSlowestTime = (times) => {
-      return formattedTime(Math.max(...times));
-    };
-
-    const calcRunningAverage = (times) => {
-      return formattedTime(times.reduce((prev, cur) => (prev + cur))/times.length);
+      e.preventDefault();
+      dispatch({ type: 'TOGGLE' });
     };
 
     window.addEventListener('keydown', handleKeydown);
     window.addEventListener('keyup', handleKeyup);
 
-    if(running) {
-      interval = setInterval(() => setTime((time) => time + 10), 10);
-    }
-
     return () => {
       clearInterval(interval);
-      window.removeEventListener("keydown", handleKeydown);
-      window.removeEventListener("keyup", handleKeyup);
+      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('keyup', handleKeyup);
     };
-  }, [time, running]);
-
-  const toggleTimer = () => {
-    /* @TODO fix bug: If you start time with click and then stop with keyboard
-     * it records the time but doesn't actually stop the timer.
-     * Something isn't updating properly.*/
-    setReady(false);
-
-    if(!running) {
-      setRunning(true);
-    } else {
-      setRunning(false);
-      setSolveTimes(s => [...s, time]);
-      setTime(0);
-    }
-  };
-
-  const formattedTime = t => {
-    let str = '';
-
-    if(t > 60000) str += `${Math.floor((t/60000) % 60)}:`;
-    str += `${Math.floor((t/1000) % 60)}:`;
-    str += Math.floor((t/10) % 100).toString().padStart(2, "0")
-
-    return str;
-  }
+  }, [state.running]);
 
   return <div className="container timer-container">
     <div className="solve-times card">
       <ul>
       {
-        solveTimes.map((t, index) => {
+        state.solveTimes.map((t, index) => {
           return <li key={index} className="time">{formattedTime(t)}</li>;
         })
       }
      </ul>
     </div>
     <div className="timer-window card">
-      <span className="timer-min">
-        {(time >= 60000) ? `${Math.floor((time/60000) % 60).toString().padStart(2, "0")}:` : ''}
-      </span>
-      <span className="timer-sec">
-        {Math.floor((time/1000) % 60).toString().padStart(2, "0")}:
-      </span>
-      <span className="timer-ms">
-        {Math.floor((time/10) % 100).toString().padStart(2, "0")}
-      </span>
+      <span>{formattedTime(state.time, '0:00')}</span>
     </div>
-    <button className={`btn timer-btn-start ${ready ? 'timer-btn-ready' : '' }`} onClick={toggleTimer}>Start</button>
+    <button id="timer-btn"
+      className={`btn timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
+      onClick={() => dispatch({ type: 'TOGGLE' })}>Start</button>
     <div className="card row">
       <div className="col s6">
-        <p>Average: {runningAverage}</p>
+        <p>Average: {formattedTime(state.runningAverage)}</p>
       </div>
       <div className="col s6">
-        <p>Fastest: {fastestTime}</p>
-        <p>Slowest: {slowestTime}</p>
+        <p>Fastest: {formattedTime(state.fastestTime)}</p>
+        <p>Slowest: {formattedTime(state.slowestTime)}</p>
       </div>
     </div>
     </div>;
