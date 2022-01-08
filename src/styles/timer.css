@@ -4,15 +4,14 @@
   width: 100%;
   height: 3em;
   font-size: 2em;
+  background: #00bcd4 !important;
+  text-transform: unset;
 }
 
-.timer-btn-ready {
-  background: orange;
+.timer-btn-ready,
+.timer-btn-start:hover {
+  background: #ffd54f !important;
 }
-
-/* .timer-btn-start:focus { */
-/*   background: orange; */
-/* } */
 
 .timer-window {
   font-family: "Noto Sans Display", sans-serif !important;
@@ -27,6 +26,7 @@
 .solve-times ul {
   padding: 0 0.4em;
   text-align: left;
+  height: 2em;
 }
 
 .solve-times ul li {
