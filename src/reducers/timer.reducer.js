@@ -1,3 +1,5 @@
+import ScrambleService from '../services/scramble.service';
+
 const TimerReducer = (state, action) => {
   const calcFastestTime = (times) => {
     return Math.min(...times);
@@ -22,7 +24,8 @@ const TimerReducer = (state, action) => {
           fastestTime: calcFastestTime([...state.solveTimes, state.time]),
           slowestTime: calcSlowestTime([...state.solveTimes, state.time]),
           runningAverage: calcRunningAverage([...state.solveTimes, state.time]),
-          solveTimes: [...state.solveTimes, state.time]
+          solveTimes: [...state.solveTimes, state.time],
+          scramble: ScrambleService.generate()
         };
       }
       return { ...state, time: 0, ready: false, running: true };
