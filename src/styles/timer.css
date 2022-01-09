@@ -24,14 +24,30 @@
   width: 60%;
 }
 
+.solve-times {
+  min-height: 50vh;
+}
+
 .solve-times ul {
   padding: 0 0.4em;
   text-align: left;
-  height: 2em;
 }
 
 .solve-times ul li {
-  display: inline-block;
   padding: 0.2em;
   text-align: left;
+}
+
+.solve-times ul li button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: #00bcd4;
+}
+
+.solve-times ul li button:hover {
+}
+
+.scramble {
+  font-size: 1.3em;
 }
