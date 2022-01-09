@@ -1,5 +1,5 @@
 import { React } from 'react';
 
-const Scramble = (props) => <h5 className="grey lighten-3 scramble">{props.scramble}</h5>;
+const Scramble = (props) => <p className="grey lighten-3 scramble">{props.scramble}</p>
 
 export default Scramble;
