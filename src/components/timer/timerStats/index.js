@@ -23,13 +23,14 @@ const TimerStats = (props) => {
       <p>Fastest: {humanReadableTime(CalculateService.fastestTime(props.solveTimes))}</p>
       <p>Slowest: {humanReadableTime(CalculateService.slowestTime(props.solveTimes))}</p>
       <select name="puzzle-type"
+        defaultValue={'3x3'}
         onChange={(e) => {
           e.preventDefault();
           props.dispatch({ type: 'PUZZLE_TYPE', puzzle: e.target.value  })
         }
       }>
         <option value="2x2">2x2</option>
-        <option value="3x3" selected>3x3</option>
+        <option value="3x3">3x3</option>
         <option value="4x4">4x4</option>
         <option value="5x5">5x5</option>
         <option value="6x6">6x6</option>
