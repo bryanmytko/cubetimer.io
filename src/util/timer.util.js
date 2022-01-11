@@ -12,7 +12,6 @@ const formattedTime = (t, initialValue) => {
 
 const calcRunningAverage = (times) => {
   if(!times || !times.length) return;
-  console.log(times);
   return times.reduce((prev, cur) => (prev + cur))/(times.length);
 };
 
