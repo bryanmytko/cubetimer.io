@@ -32,8 +32,17 @@ footer a {
 
 nav {}
 
-nav ul li a {
+header nav ul li {
   color: #000;
+}
+
+header nav ul li.spacer {
+  padding: 0 8px;
+}
+
+header nav ul li a {
+  color: #000;
+  padding: 0 6px;
 }
 
 .main-container {
