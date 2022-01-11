@@ -21,30 +21,6 @@ div#root {
   display: flex;
 }
 
-footer {
-  padding: 1em 0;
-  font-size: 0.8em;
-}
-
-footer a {
-  color: #fff;
-}
-
-nav {}
-
-header nav ul li {
-  color: #000;
-}
-
-header nav ul li.spacer {
-  padding: 0 8px;
-}
-
-header nav ul li a {
-  color: #000;
-  padding: 0 6px;
-}
-
 .main-container {
   margin-top: 5em;
 }
@@ -53,39 +29,8 @@ header nav ul li a {
   background: #5d7e8b;
 }
 
-#logo {
-  background: url(../public/logo.png) 0 14px no-repeat;
-  background-size: 36px;
-  padding: 0px 0 0 44px;
-  height: 48px;
-  font-size: 1.4em;
-  width: 204px;
-  color: #000;
-}
-
 .scramble {
   padding: 1em 0;
-}
-
-.select-wrapper {
-  float: right;
-  width: 60px;
-  margin-top: -10px;
-}
-
-.select-wrapper input.select-dropdown,
-.select-wrapper input.select-dropdown:focus {
-  font-size: 1em !important;
-  border-bottom: 1px solid #000 !important;
-}
-
-.select-wrapper .dropdown-content li > span{
-  color: #000;
-  font-size: 1.3em;
-}
-
-.select-dropdown {
-  font-size: 10px;
 }
 
 ul.dropdown-content li a {

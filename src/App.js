@@ -1,9 +1,6 @@
 import 'materialize-css/dist/css/materialize.min.css'
 
-import Header from './components/layout/header.component';
-import Footer from './components/layout/footer.component';
-import Logo from './components/layout/logo.component';
-import Timer from './components/timer.component';
+import { Footer, Header, Timer } from './components';
 
 function App() {
   return (

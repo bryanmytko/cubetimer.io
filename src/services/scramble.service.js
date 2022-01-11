@@ -11,7 +11,7 @@ class ScrambleService {
     this.scrambleLength = 21;
   }
 
-  generate() {
+  generate = () => {
     const moves = [];
     let currMove, currFace, prevFace;
 
@@ -26,7 +26,7 @@ class ScrambleService {
     return moves.join(' ');
   }
 
-  randInt(a, b) {
+  randInt = (a, b) => {
     const lower = Math.min(a, b);
     const upper = Math.max(a, b);
     const diff = upper - lower;
@@ -34,7 +34,7 @@ class ScrambleService {
     return Math.floor((Math.random() * (diff + 1)) + lower);
   }
 
-  getRandomFace(prevFace) {
+  getRandomFace = (prevFace) => {
     let randomFace;
 
     do {
@@ -44,11 +44,11 @@ class ScrambleService {
     return randomFace;
   }
 
-  getRandomMove(face) {
+  getRandomMove = (face) => {
     return face.turns[this.randInt(0, face.turns.length - 1)];
   }
 
-  isValidFace(curr, prev) {
+  isValidFace = (curr, prev) => {
     const prevFace = prev || {};
     return (curr.name !== prevFace.name)
       && (curr.restricted.indexOf(prevFace.name) === -1);

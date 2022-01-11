@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './style.css';
+
 const Footer = () => {
   return <footer className="grey darken-4">
     <div className="container center-align white-text">
