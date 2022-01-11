@@ -23,6 +23,11 @@ div#root {
 
 footer {
   padding: 1em 0;
+  font-size: 0.8em;
+}
+
+footer a {
+  color: #fff;
 }
 
 nav {}
