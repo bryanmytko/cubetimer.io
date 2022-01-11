@@ -28,8 +28,14 @@ const TimerStats = (props) => {
           props.dispatch({ type: 'PUZZLE_TYPE', puzzle: e.target.value  })
         }
       }>
-        <option value="3x3">3x3</option>
+        <option value="2x2">2x2</option>
+        <option value="3x3" selected>3x3</option>
         <option value="4x4">4x4</option>
+        <option value="5x5">5x5</option>
+        <option value="6x6">6x6</option>
+        <option value="7x7">7x7</option>
+        {/* <option value="pyraminx">Pyraminx</option> */}
+        {/* <option value="megaminx">Megaminx</option> */}
       </select>
     </div>
   </div>;
