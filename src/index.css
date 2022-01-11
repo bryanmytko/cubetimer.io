@@ -1,15 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Rubik', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background: rgb(47,60,65);
+  background: radial-gradient(circle, rgba(47,60,65,1) 35%, rgba(23,27,29,1) 100%);
 }
 
 main {
@@ -24,6 +23,30 @@ div#root {
 
 footer {
   padding: 1em 0;
+}
+
+nav {}
+
+nav ul li a {
+  color: #000;
+}
+
+.main-container {
+  margin-top: 5em;
+}
+
+.main-container .card {
+  background: #5d7e8b;
+}
+
+#logo {
+  background: url(../public/logo.png) 0 14px no-repeat;
+  background-size: 36px;
+  padding: 0px 0 0 44px;
+  height: 48px;
+  font-size: 1.4em;
+  width: 204px;
+  color: #000;
 }
 
 .scramble {

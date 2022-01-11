@@ -53,38 +53,36 @@ const Timer = () => {
 
   return <div className="container timer-container">
       <div className="row">
-        <div className="col s4">
-          <div className="solve-times card">
-            <h5>Solve Times:</h5>
-            <ul>
-            {
-              state.solveTimes.map((t, index) => {
-                return <li key={index} className="time">{formattedTime(t)}
-                <button onClick={() => dispatch({ type: 'REMOVE_TIME', index })}>[x]</button>
-                </li>;
-              })
-            }
-           </ul>
-          </div>
-        </div>
-        <div className="col s8">
+        <div className="col s12 m9 l9">
           <Scramble scramble={state.scramble} />
           <div className="timer-window card">
             <span>{formattedTime(state.time, '0:00')}</span>
           </div>
           <button id="timer-btn"
-            className={`black-text btn timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
+            className={`timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
             onClick={() => dispatch({ type: 'TOGGLE' })}>Press spacebar or click to begin!</button>
-          <div className="card row">
-            <div className="col s6 left-align">
-              <p>Cubes Solved: {state.solveTimes.length}</p>
-              <p>Average: {formattedTime(calcRunningAverage(state.solveTimes))}</p>
+          <div className="timer-stats">
+            <div className="col s6 m6 l6 left-align">
+                <p>Cubes Solved: {state.solveTimes.length}</p>
+                <p>Average: {formattedTime(calcRunningAverage(state.solveTimes))}</p>
             </div>
-            <div className="col s6 right-align">
-              <p>Fastest: {formattedTime(calcFastestTime(state.solveTimes))}</p>
-              <p>Slowest: {formattedTime(calcSlowestTime(state.solveTimes))}</p>
+            <div className="col s6 m6 l6 right-align">
+                <p>Fastest: {formattedTime(calcFastestTime(state.solveTimes))}</p>
+                <p>Slowest: {formattedTime(calcSlowestTime(state.solveTimes))}</p>
             </div>
           </div>
+        </div>
+        <div className="solve-times col s12 m3 l3">
+          <h5>Solve Times</h5>
+          <ul>
+          {
+            state.solveTimes.map((t, index) => {
+              return <li key={index} className="time">{formattedTime(t)}
+              <button onClick={() => dispatch({ type: 'REMOVE_TIME', index })}>[x]</button>
+              </li>;
+            })
+          }
+          </ul>
         </div>
       </div>
     </div>;

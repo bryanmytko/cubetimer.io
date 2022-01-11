@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;500;600;700&display=swap');  
 
 .timer-btn-start {
   width: 100%;
-  height: 3em;
-  font-size: 2em;
-  background: #00bcd4 !important;
-  text-transform: unset;
+  height: 2.4em;
+  font-size: 1.3em;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   margin: 0.5rem 0 1rem 0;
+  background: rgb(253,187,45);
+  background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(224,159,19,1) 100%);
+  border: 0;
+  border-radius: 4px;
 }
 
 .timer-btn-ready,
@@ -14,23 +20,58 @@
   background: #ffd54f !important;
 }
 
-.timer-window {
-  font-family: "Noto Sans Display", sans-serif !important;
-  background: white;
+.main-container .timer-window {
+  font-family: "Noto Sans Display", sans-serif;
+  background: #3a484e;
   font-size: 4em;
+  text-align: center;
+  font-size: 5.4em;
+  font-weight: 600;
+  color: #fdfdfd;
 }
 
 .timer-container {
   width: 60%;
 }
 
-.solve-times {
-  min-height: 50vh;
+.timer-stats {
+  background: #5d7e8b;
+  position: relative;
+  border-radius: 2px;
 }
 
-.solve-times ul {
-  padding: 0 0.4em;
-  text-align: left;
+.timer-stats:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.main-container .solve-times {
+  background: none;
+  height: 58vh;
+  font-size: 1.0em;
+  color: #fff;
+  padding-left: 40px;
+  overflow: scroll;
+}
+
+/* ::-webkit-scrollbar { */
+/*   -webkit-appearance: none; */
+/*   width: 7px; */
+/* } */
+/*  */
+/* ::-webkit-scrollbar-thumb { */
+/*   border-radius: 4px; */
+/*   background-color: rgba(0, 0, 0, .5); */
+/*   box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
+/* } */
+
+.main-container .solve-times h5 {
+  margin-top: 24px;
+  font-weight: 600;
+  font-size: 1.1em;
+  border-bottom: 1px solid #e8a71a;
+  padding: 0 0 8px 0;
 }
 
 .solve-times ul li {
@@ -50,4 +91,8 @@
 
 .scramble {
   font-size: 1.3em;
+  /* color: #05e2ff; */
+  color: #fff;
+  text-align: center;
+  margin: 0;
 }
