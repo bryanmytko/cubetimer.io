@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
+import M from 'materialize-css';
 import '../styles/timer.css';
 
 import Scramble from './scramble.component';
@@ -16,8 +17,13 @@ const initialState = {
   ready: false,
   time: 0,
   solveTimes: [],
-  scramble: ScrambleService.generate()
+  scramble: new ScrambleService('3x3').generate()
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+  const elems = document.querySelectorAll('select');
+  M.FormSelect.init(elems);
+});
 
 const Timer = () => {
   const [state, dispatch] = useReducer(TimerReducer, initialState);
@@ -69,6 +75,15 @@ const Timer = () => {
             <div className="col s6 m6 l6 right-align">
                 <p>Fastest: {formattedTime(calcFastestTime(state.solveTimes))}</p>
                 <p>Slowest: {formattedTime(calcSlowestTime(state.solveTimes))}</p>
+                <select name="puzzle-type"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    dispatch({ type: 'PUZZLE_TYPE', puzzle: e.target.value  })
+                  }
+                }>
+                  <option value="3x3">3x3</option>
+                  <option value="4x4">4x4</option>
+                </select>
             </div>
           </div>
         </div>

@@ -1,7 +1,13 @@
-import { cube3x3 } from '../lib/cubes';
+import { cube3x3, cube4x4 } from '../lib/cubes';
+
+const puzzles = {
+  '3x3': cube3x3,
+  '4x4': cube4x4
+};
 
 class ScrambleService {
-  constructor() {
+  constructor(puzzle) {
+    this.puzzle = puzzles[puzzle] || cube3x3;
     this.scrambleLength = 21;
   }
 
@@ -32,7 +38,7 @@ class ScrambleService {
     let randomFace;
 
     do {
-      randomFace = cube3x3[this.randInt(0, cube3x3.length - 1)];
+      randomFace = this.puzzle[this.randInt(0, this.puzzle.length - 1)];
     } while(!this.isValidFace(randomFace, prevFace))
 
     return randomFace;
@@ -49,4 +55,4 @@ class ScrambleService {
   }
 }
 
-export default new ScrambleService();
+export default ScrambleService;

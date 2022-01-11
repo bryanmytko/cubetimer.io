@@ -57,3 +57,25 @@ nav ul li a {
 .scramble {
   padding: 1em 0;
 }
+
+.select-wrapper .dropdown-content li > span{
+  font-size: 10px;
+}
+
+.select-dropdown{
+  font-size: 10px;
+}
+
+ul.dropdown-content li a {
+  font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+

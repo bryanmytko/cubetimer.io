@@ -9,7 +9,7 @@ const TimerReducer = (state, action) => {
           running: false,
           ready: false,
           solveTimes: [...state.solveTimes, state.time],
-          scramble: ScrambleService.generate()
+          scramble: new ScrambleService('3x3').generate()
         };
       }
       return { ...state, time: 0, ready: false, running: true };
@@ -19,6 +19,13 @@ const TimerReducer = (state, action) => {
       return { ...state, solveTimes: state.solveTimes.filter((el, i, arr) => el !== arr[action.index])};
     case 'TICK':
       return { ...state, time: state.time + 10 };
+    case 'PUZZLE_TYPE':
+      return {
+        ...state,
+        running: false,
+        solveTimes: [],
+        scramble: new ScrambleService(action.puzzle).generate()
+      }
     default:
       throw new Error(`Invalid action type: ${action.type}`);
   }
