@@ -15,6 +15,16 @@ const calcRunningAverage = (times) => {
   return times.reduce((prev, cur) => (prev + cur))/(times.length);
 };
 
+const calcao5 = (times) => {
+  if(!times || (times.length < 5)) return;
+  return times.slice(-5).reduce((prev, cur) => (prev + cur))/5;
+}
+
+const calcao10 = (times) => {
+  if(!times || (times.length < 10)) return;
+  return times.slice(-10).reduce((prev, cur) => (prev + cur))/10;
+}
+
 const calcFastestTime = (times) => {
   if(!times.length) return;
   return Math.min(...times);
@@ -25,4 +35,11 @@ const calcSlowestTime = (times) => {
   return Math.max(...times);
 };
 
-export { formattedTime, calcRunningAverage, calcFastestTime, calcSlowestTime };
+export {
+  formattedTime,
+  calcRunningAverage,
+  calcao5,
+  calcao10,
+  calcFastestTime,
+  calcSlowestTime
+};

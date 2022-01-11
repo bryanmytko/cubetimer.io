@@ -7,6 +7,8 @@ import ScrambleService from '../services/scramble.service';
 import TimerReducer from '../reducers/timer.reducer';
 import {
   calcRunningAverage,
+  calcao5,
+  calcao10,
   calcFastestTime,
   calcSlowestTime,
   formattedTime
@@ -71,6 +73,8 @@ const Timer = () => {
             <div className="col s6 m6 l6 left-align">
               <p>Cubes Solved: {state.solveTimes.length}</p>
               <p>Average: {formattedTime(calcRunningAverage(state.solveTimes))}</p>
+              <p>Ao5: {formattedTime(calcao5(state.solveTimes))}</p>
+              <p>Ao10: {formattedTime(calcao10(state.solveTimes))}</p>
             </div>
             <div className="col s6 m6 l6 right-align">
               <p>Fastest: {formattedTime(calcFastestTime(state.solveTimes))}</p>
