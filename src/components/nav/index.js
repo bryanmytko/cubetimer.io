@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Logo } from '../';
 import './style.css';
 
@@ -7,8 +8,8 @@ const Nav = () => {
     <div className="container nav-wrapper">
       <Logo />
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a href="/">Timer</a></li>
-        <li><a href="/">Statistics</a></li>
+        <li><Link to="/">Timer</Link></li>
+        <li><Link to="statistics">Statistics</Link></li>
         <li><a href="/">Profile</a></li>
         <li><a href="/">Tutorials</a></li>
         <li><a href="/">Puzzles</a></li>
