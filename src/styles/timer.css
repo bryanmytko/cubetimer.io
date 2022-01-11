@@ -17,7 +17,9 @@
 
 .timer-btn-ready,
 .timer-btn-start:hover {
+  cursor: pointer;
   background: #ffd54f !important;
+  background: linear-gradient(0deg, rgb(21 171 193) 0%, rgb(28 133 157) 100%) !important;
 }
 
 .main-container .timer-window {
@@ -48,10 +50,13 @@
 
 .main-container .solve-times {
   background: none;
-  height: 58vh;
   font-size: 1.0em;
   color: #fff;
   padding-left: 40px;
+}
+
+.main-container .solve-times ul {
+  height: 58vh;
   overflow: scroll;
 }
 
