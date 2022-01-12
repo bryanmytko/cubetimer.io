@@ -10,11 +10,10 @@ const Nav = () => {
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li><Link to="/">Timer</Link></li>
         <li><Link to="statistics">Statistics</Link></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Tutorials</a></li>
-        <li><a href="/">Puzzles</a></li>
+        <li><Link to="profile">Profile</Link></li>
+        <li><Link to="tutorials">Tutorials</Link></li>
         <li className="spacer">|</li>
-        <li><a href="/">Login</a></li>
+        <li><Link to="login">Login</Link></li>
       </ul>
     </div>
   </nav>;
