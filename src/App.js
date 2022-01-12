@@ -1,7 +1,15 @@
 import 'materialize-css/dist/css/materialize.min.css'
 import { Routes, Route } from 'react-router-dom';
 
-import { Footer, Header, Statistics, Timer } from './components';
+import {
+  Footer,
+  Header,
+  Login,
+  Profile,
+  Statistics,
+  Timer,
+  Tutorials
+} from './components';
 
 function App() {
   return (
@@ -12,6 +20,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Timer />} />
             <Route path="/statistics" element={<Statistics />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/tutorials" element={<Tutorials />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </main>
