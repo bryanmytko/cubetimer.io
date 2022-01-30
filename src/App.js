@@ -1,5 +1,6 @@
-import 'materialize-css/dist/css/materialize.min.css'
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import 'materialize-css/dist/css/materialize.min.css'
 
 import {
   Footer,
