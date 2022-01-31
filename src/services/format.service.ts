@@ -1,5 +1,5 @@
 class FormatService {
-  humanReadableTime = (t, initialValue) => {
+  humanReadableTime = (t: number, initialValue?: string): string => {
     if(!t) return initialValue || '--';
 
     let str = '';
