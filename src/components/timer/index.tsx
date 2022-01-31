@@ -6,17 +6,8 @@ import TimerStats from './timerStats';
 import SolveTimes from './solveTimes';
 import { TimerReducer, TimerActionKind } from '../../reducers';
 import { FormatService, ScrambleService } from '../../services';
-//import { TimerState } from '../../types';
 
 const { humanReadableTime } = FormatService;
-
-interface TimerState {
-  running: boolean;
-  ready: boolean;
-  time: number;
-  solveTimes: Array<number>;
-  scramble: string;
- }
 
 const initialState: TimerState = {
   running: false,
