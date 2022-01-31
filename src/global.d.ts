@@ -12,6 +12,10 @@ declare global {
     dispatch: TimerAction
   }
 
+  interface ScrambleProps {
+    scramble: string;
+  }
+
   interface PuzzleType {
     moves: Array<MovesType>,
     final?: Array<MovesType>
