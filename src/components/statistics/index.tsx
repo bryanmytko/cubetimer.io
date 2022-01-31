@@ -12,7 +12,7 @@ const Statistics = () => {
           <tr>
             <th>Date</th>
             <th>Average</th>
-            <th colspan="13">Times</th>
+            <th colSpan={13}>Times</th>
           </tr>
           <tr>
             <td>11/5/1955</td>

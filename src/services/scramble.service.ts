@@ -9,7 +9,7 @@ import {
   cubeMegaminx
 } from '../lib/cubes';
 
-const puzzles = {
+const puzzles: PuzzleArray = {
   '2x2': cube2x2,
   '3x3': cube3x3,
   '4x4': cube4x4,
@@ -21,12 +21,15 @@ const puzzles = {
 };
 
 class ScrambleService {
-  constructor(puzzle) {
-    this.puzzle = puzzles[puzzle] || cube3x3;
+  puzzle: PuzzleType;
+  scrambleLength: number;
+
+  constructor(puzzleName: string = '3x3') {
+    this.puzzle = puzzles[puzzleName];
     this.scrambleLength = 21;
   }
 
-  generate = () => {
+  generate = (): string => {
     const moves = [];
     let currMove, currFace, prevFace;
 
@@ -39,14 +42,17 @@ class ScrambleService {
     }
 
     if(this.puzzle.final) {
-      const finalFace = moves.push(this.getRandomFace(this.puzzle.final));
-      moves.push(finalFace);
+      moves.push(
+        this.puzzle.final[
+          this.randInt(0, this.puzzle.final.length - 1)
+        ]
+      );
     }
 
     return moves.join(' ');
   }
 
-  randInt = (a, b) => {
+  randInt = (a: number, b: number): number => {
     const lower = Math.min(a, b);
     const upper = Math.max(a, b);
     const diff = upper - lower;
@@ -54,25 +60,29 @@ class ScrambleService {
     return Math.floor((Math.random() * (diff + 1)) + lower);
   }
 
-  getRandomFace = (prevFace) => {
-    let randomFace;
+  getRandomFace = (prevFace?: MovesType): MovesType => {
+    if(prevFace) {
+      let randomFace;
 
-    do {
-      randomFace = this.puzzle.moves[this.randInt(0, this.puzzle.moves.length - 1)];
-    } while(!this.isValidFace(randomFace, prevFace))
+      do {
+        randomFace = this.puzzle.moves[
+          this.randInt(0, this.puzzle.moves.length - 1)
+        ];
+      } while(!this.isValidFace(randomFace, prevFace));
 
-    return randomFace;
+      return randomFace;
+    }
+
+    return this.puzzle.moves[this.randInt(0, this.puzzle.moves.length - 1)];
   }
 
-  getRandomMove = (face) => {
+  getRandomMove = (face: MovesType): string => {
     return face.turns[this.randInt(0, face.turns.length - 1)];
   }
 
-  isValidFace = (curr, prev) => {
-    const prevFace = prev || {};
-    return (curr.name !== prevFace.name)
-      && (curr.restricted.indexOf(prevFace.name) === -1);
-  }
+  isValidFace = (curr: MovesType, prev: MovesType): boolean => (
+    (curr.name !== prev.name) && (curr.restricted.indexOf(prev.name) === -1)
+  )
 }
 
 export default ScrambleService;
