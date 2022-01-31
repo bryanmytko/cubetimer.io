@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 
 const Login = () => {
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
   };
 
