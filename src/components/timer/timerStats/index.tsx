@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   M.FormSelect.init(elems);
 });
 
-const TimerStats = (props) => {
+const TimerStats = (props: TimerStatsProps) => {
   return <div className="timer-stats">
     <div className="col s6 m6 l6 left-align">
       <p>Cubes Solved: {props.solveTimes.length}</p>
