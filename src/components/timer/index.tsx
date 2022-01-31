@@ -4,12 +4,21 @@ import './style.css';
 import { Scramble } from '../';
 import TimerStats from './timerStats';
 import SolveTimes from './solveTimes';
-import { TimerReducer } from '../../reducers';
+import { TimerReducer, TimerActionKind } from '../../reducers';
 import { FormatService, ScrambleService } from '../../services';
+//import { TimerState } from '../../types';
 
 const { humanReadableTime } = FormatService;
 
-const initialState = {
+interface TimerState {
+  running: boolean;
+  ready: boolean;
+  time: number;
+  solveTimes: Array<number>;
+  scramble: string;
+ }
+
+const initialState: TimerState = {
   running: false,
   ready: false,
   time: 0,
@@ -21,22 +30,22 @@ const Timer = () => {
   const [state, dispatch] = useReducer(TimerReducer, initialState);
 
   useEffect(() => {
-    let interval;
+    let interval: NodeJS.Timeout;
 
     if(state.running) {
-      interval = setInterval(() => dispatch({ type: 'TICK' }), 10);
+      interval = setInterval(() => dispatch({ type: TimerActionKind.TICK }), 10);
     }
 
-    const handleKeydown = e => {
+    const handleKeydown = (e: KeyboardEvent) => {
       if(e.key !== ' ') return;
       e.preventDefault();
-      dispatch({ type: 'READY' });
+      dispatch({ type: TimerActionKind.READY });
     };
 
-    const handleKeyup = e => {
+    const handleKeyup = (e: KeyboardEvent) => {
       if(e.key !== ' ') return;
       e.preventDefault();
-      dispatch({ type: 'TOGGLE' });
+      dispatch({ type: TimerActionKind.TOGGLE });
     };
 
     window.addEventListener('keydown', handleKeydown);
@@ -58,7 +67,7 @@ const Timer = () => {
           </div>
           <button id="timer-btn"
             className={`timer-btn-start ${state.ready ? 'timer-btn-ready' : '' }`}
-            onClick={() => dispatch({ type: 'TOGGLE' })}>Press spacebar or click to begin!
+            onClick={() => dispatch({ type: TimerActionKind.TOGGLE })}>Press spacebar or click to begin!
         </button>
         <TimerStats dispatch={dispatch} solveTimes={state.solveTimes} />
         </div>
